@@ -1,0 +1,209 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #C5C6C1;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.c-container {
+    width: 660px;
+    height: 910px;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    box-shadow: 2px 4px 8px 5px #777;
+}
+
+.left {
+    width: 40%;
+    background: linear-gradient(to right, rgba(0,29,34,1) 0%, rgba(0,41,49,1) 100%);
+    color: #CCD4D5;
+}
+
+.right-b {
+    width: 60%;
+    padding-right: 20px;
+    color: #696B6B;
+}
+
+.avatar {
+    padding: 30px 68px 0;
+}
+
+.avatar img {
+    border-radius: 50%;
+    border: 2px solid #9c1f30;
+}
+
+.name,
+.name-sub {
+    text-align: center;
+}
+
+.name {
+    margin: 14px 0 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.name-sub {
+    display: block;
+    font-weight: 300;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.left-info-block.right {
+    width: 100%;
+}
+
+.left-info-block {
+    margin-top: 30px;
+}
+
+.left-info-block a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.left-info-block h3 {
+    font-size: 19px;
+    font-weight: 500;
+    padding-left: 32px;
+    margin: 0;
+    position: relative;
+}
+
+.left-info-block h3::before {
+    position: absolute;
+    content: '';
+    top: 50%;
+    transform: translateY(-50%);
+    left: 12px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #FF0029;
+}
+
+.left-info-block h3::after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    transform: translateY(-50%);
+    right: 7px;
+    width: 146px;
+    height: 1px;
+    background-color: #FF0029;
+}
+
+.left-info-block.personal h3::after {
+    width: 102px;
+}
+.left-info-block.personal td:last-child {
+    width: 142px;
+}
+
+.left-info-block.right h3::after {
+    right: 0;
+}
+
+.skills.left-info-block h3::after {
+    width: 168px;
+}
+
+.skills.left-info-block td:first-child {
+
+}
+
+.left-info-block table {
+    margin: 10px 0 0 32px;
+    font-size: 13px;
+}
+
+.left-info-block td:first-child {
+    font-weight: 500;
+    width: 75px;
+}
+
+.skills.left-info-block td:first-child {
+    width: 100px;
+}
+
+.left-info-block td:last-child {
+    font-weight: 300;
+    width: 114px;
+}
+
+.left-info-block tr.indent td {
+    padding-top: 14px;
+}
+
+.bar {
+    height: 5px;
+    background-color: #00080F;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.bar-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    display: inline-block;
+    width: 30%;
+    background-color: #FF0029;
+}
+
+.bar-fill.js { width: 90% }
+.bar-fill.node { width: 78% }
+.bar-fill.react { width: 82% }
+.bar-fill.redux { width: 82% }
+.bar-fill.react-native { width: 50% }
+.bar-fill.vue { width: 50% }
+.bar-fill.ng { width: 60% }
+.bar-fill.rxjs { width: 70% }
+.bar-fill.mysql { width: 70% }
+.bar-fill.mongo { width: 70% }
+.bar-fill.git { width: 95% }
+.bar-fill.docker { width: 65% }
+.bar-fill.html-css { width: 80% }
+.bar-fill.ts-flow { width: 65% }
+.bar-fill.algorithms { width: 80% }
+.bar-fill.patterns { width: 75% }
+
+.left-info-block.right p {
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 32px;
+    margin-top: 12px;
+}
+
+.left-info-block.right h3::after {
+    width: 252px;
+}
+.left-info-block.right.work h3::after {
+    width: 192px;
+}
+.left-info-block.right.education h3::after {
+    width: 250px;
+}
+
+.left-info-block.right strong:not(.work) {
+    display: inline-block;
+    margin-bottom: 2px;
+}
+
+.little {
+    font-size: 13px;
+    display: inline-block;
+    margin-bottom: 2px;
+    font-style: italic;
+}
