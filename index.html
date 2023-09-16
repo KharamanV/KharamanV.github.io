@@ -1,0 +1,183 @@
+<script>
+  // INPUTS
+  // INPUTS
+  // INPUTS
+  // INPUTS
+  // INPUTS
+  // INPUTS
+  const DmytroCurrentWeight = 74.9;
+  const VolodymyrCurrentWeight = 91;
+  // INPUTS
+  // INPUTS
+  // INPUTS
+  // INPUTS
+  // INPUTS
+  // INPUTS
+
+  // DO NOT EDIT
+  // DO NOT EDIT
+  // DO NOT EDIT
+  // DO NOT EDIT
+  // DO NOT EDIT
+  // DO NOT EDIT
+  // DO NOT EDIT
+  // DO NOT EDIT
+  // DO NOT EDIT
+  const END_GOAL_WEIGHT = 77.5;
+  const DAYS_LEFT_FROM_START = 114;
+  const TODAY = new Date();
+  const END_OF_YEAR = new Date(TODAY.getFullYear(), 11, 31);
+  const DAYS_LEFT_FROM_TODAY = Math.ceil((END_OF_YEAR.getTime() - TODAY.getTime()) / (1000 * 60 * 60 * 24));
+  const progress = {
+    Dmytro: {
+      startingWeight: 74.5,
+    },
+    Volodymyr: {
+      startingWeight: 92.4,
+    },
+  };
+  progress.Dmytro.mainGoal = {
+    currentProgressPercentage: Math.round(
+      ((DmytroCurrentWeight - progress.Dmytro.startingWeight) / (END_GOAL_WEIGHT - progress.Dmytro.startingWeight)) *
+        100
+    ),
+  };
+  progress.Dmytro.requiredDailyResult = (END_GOAL_WEIGHT - progress.Dmytro.startingWeight) / DAYS_LEFT_FROM_START;
+  progress.Dmytro.requiredResultTD =
+    (DAYS_LEFT_FROM_START - DAYS_LEFT_FROM_TODAY) * progress.Dmytro.requiredDailyResult;
+  progress.Dmytro.actualResult = DmytroCurrentWeight - progress.Dmytro.startingWeight;
+  progress.Dmytro.delta = (progress.Dmytro.actualResult - progress.Dmytro.requiredResultTD).toFixed(2);
+
+  progress.Volodymyr.mainGoal = {
+    currentProgressPercentage: Math.round(
+      ((VolodymyrCurrentWeight - progress.Volodymyr.startingWeight) /
+        (END_GOAL_WEIGHT - progress.Volodymyr.startingWeight)) *
+        100
+    ),
+  };
+  progress.Volodymyr.requiredDailyResult = (progress.Volodymyr.startingWeight - END_GOAL_WEIGHT) / DAYS_LEFT_FROM_START;
+  progress.Volodymyr.requiredResultTD =
+    (DAYS_LEFT_FROM_START - DAYS_LEFT_FROM_TODAY) * progress.Volodymyr.requiredDailyResult;
+  progress.Volodymyr.actualResult = progress.Volodymyr.startingWeight - VolodymyrCurrentWeight;
+  progress.Volodymyr.delta = (progress.Volodymyr.actualResult - progress.Volodymyr.requiredResultTD).toFixed(2);
+
+
+  window.onload = function () {
+    document.getElementById("Dmytro.currentWeight").innerHTML = DmytroCurrentWeight;
+    document.getElementById("Volodymyr.currentWeight").innerHTML = VolodymyrCurrentWeight;
+    document.getElementById("daysLeft").innerHTML = DAYS_LEFT_FROM_TODAY;
+
+    const DMainGoal = document.getElementById("Dmytro.mainGoal");
+    const DResult = document.getElementById("Dmytro.result");
+    const VMainGoal = document.getElementById("Volodymyr.mainGoal");
+    const VResult = document.getElementById("Volodymyr.result");
+
+    DMainGoal.classList.add(`bar-${progress.Dmytro.mainGoal.currentProgressPercentage}`);
+    DMainGoal.setAttribute("data-before", `${progress.Dmytro.mainGoal.currentProgressPercentage}%`);
+    DResult.innerHTML = `You ARE ${
+      progress.Dmytro.delta > 0
+        ? `${progress.Dmytro.delta} kg ahead of the`
+        : progress.Dmytro.delta === 0
+        ? "JUST IN TIME"
+        : `${progress.Dmytro.delta} kg behind the`
+    } schedule`;
+    DResult.style = progress.Dmytro.delta > 0 ? "color: rgb(92 157 1 / 60%);" : "color: rgba(236, 0, 140, 0.6);";
+
+    VMainGoal.classList.add(`bar-${progress.Volodymyr.mainGoal.currentProgressPercentage}`);
+    VMainGoal.setAttribute("data-before", `${progress.Volodymyr.mainGoal.currentProgressPercentage}%`);
+
+    VResult.innerHTML = `You ARE ${
+      progress.Volodymyr.delta > 0
+        ? `${progress.Volodymyr.delta} kg ahead of the`
+        : progress.Volodymyr.delta === 0
+        ? "JUST IN TIME"
+        : `${progress.Volodymyr.delta} kg behind the`
+    } schedule`;
+    VResult.style = progress.Volodymyr.delta > 0 ? "color: rgb(92 157 1 / 60%);" : "color: rgba(236, 0, 140, 0.6);";
+  };
+</script>
+
+<head>
+  <title>LET'S FUCKING ROCK</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+
+<div>
+  <h1>Days left: <strong id="daysLeft"></strong></h1>
+</div>
+
+<div style="display: flex">
+  <div class="container">
+    <header>
+      <h1><strong>Dmytro's</strong> Progress</h1>
+      <p>Main Goal: Achieve 77.5kg by December 31, 2023.</p>
+    </header>
+
+    <section>
+      <article>
+        <h1>
+          Current Weight:
+          <strong><span id="Dmytro.currentWeight"></span> kg</strong>
+        </h1>
+        <h2 style="margin: 40px 0; font-size: 24px"><strong id="Dmytro.result"></strong></h2>
+
+        <div class="chart">
+          <div class="bar lime" id="Dmytro.mainGoal">
+            <div class="face top">
+              <div class="growing-bar"></div>
+            </div>
+            <div class="face side-0">
+              <div class="growing-bar"></div>
+            </div>
+            <div class="face floor">
+              <div class="growing-bar"></div>
+            </div>
+            <div class="face side-a"></div>
+            <div class="face side-b"></div>
+            <div class="face side-1">
+              <div class="growing-bar"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1><strong>Volodymyr's</strong> Progress</h1>
+      <p>Main Goal: Achieve 77.5kg by December 31, 2023.</p>
+      <link rel="stylesheet" href="index.css" />
+    </header>
+
+    <section>
+      <article>
+        <h1 style="margin-bottom: 40px">
+          Current Weight:
+          <strong><span id="Volodymyr.currentWeight"></span> kg</strong>
+        </h1>
+        <h2 style="margin: 40px 0; font-size: 24px"><strong id="Volodymyr.result"></strong></h2>
+
+        <div class="chart">
+          <div class="bar red" id="Volodymyr.mainGoal">
+            <div class="face top">
+              <div class="growing-bar"></div>
+            </div>
+            <div class="face side-0">
+              <div class="growing-bar"></div>
+            </div>
+            <div class="face floor">
+              <div class="growing-bar"></div>
+            </div>
+            <div class="face side-a"></div>
+            <div class="face side-b"></div>
+            <div class="face side-1">
+              <div class="growing-bar"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </div>
+</div>
